@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +16,7 @@ public class MainActivity2 extends AppCompatActivity {
     private RecyclerView recyclerView;
     private NewsAdapter newsAdapter;
     private List<NewsItem> newsItems;
+    private ImageButton cerrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +24,17 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         recyclerView = findViewById(R.id.recyclerView);
+        cerrar = findViewById(R.id.cerrar);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Inicializa la lista de noticias (simulada o desde una API)
+        cerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intento= new Intent(MainActivity2.this, MainActivity.class);
+                startActivity(intento);
+            }
+        });
+            // Inicializa la lista de noticias (simulada o desde una API)
         newsItems = new ArrayList<>();
 
 // Agrega noticias de ejemplo
